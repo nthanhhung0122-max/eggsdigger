@@ -149,7 +149,7 @@ async def process_account(acc_name, session_str):
 
     # 3. Đập vỡ trứng 100% (High-Speed Crack Loop)
     log(acc_name, "🔨 Bắt đầu cày đập vỡ vỏ trứng 100% bằng Hit Boost...")
-    for round_idx in range(5):
+    for round_idx in range(10):
         try:
             hit_res = call_server_fn(HASH_HIT, {'init': init_data, 'n': 100})
             log(acc_name, f"💥 Đập trứng đợt {round_idx + 1}: +100 hits sát thương thành công!")
