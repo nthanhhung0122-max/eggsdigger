@@ -1,0 +1,29 @@
+name: Eggs Digger 24/7 Automation
+
+on:
+  schedule:
+    # Chạy lặp lại mỗi 20 phút tự động
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-eggsdigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install telethon requests
+
+      - name: Run Eggs Digger Pro Auto
+        env:
+          TELEGRAM_SESSIONS: ${{ secrets.TELEGRAM_SESSIONS }}
+        run: |
+          python auto_eggsdigger.py
