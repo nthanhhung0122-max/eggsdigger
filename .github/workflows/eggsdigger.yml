@@ -2,9 +2,13 @@ name: Eggs Digger 24/7 Automation
 
 on:
   schedule:
-    # Chạy lặp lại mỗi 20 phút tự động
-    - cron: '*/20 * * * *'
+    # Chay lap lai moi 10 phut toi uu nang suat dap trung va dao khoang
+    - cron: '*/10 * * * *'
   workflow_dispatch:
+
+concurrency:
+  group: eggsdigger-run
+  cancel-in-progress: true
 
 jobs:
   run-eggsdigger:
